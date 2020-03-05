@@ -1,0 +1,11 @@
+server:
+  port: 8101
+spring:
+  application:
+    name: eureka-client
+eureka:
+  client:
+    register-with-eureka: true #向注册中心注册服务
+    fetch-registry: true #从服务中心取服务
+    service-url:
+      defaultZone: http://replica1:8002/eureka/,http://replica2:8003/eureka/ #注册中心地址

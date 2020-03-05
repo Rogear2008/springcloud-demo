@@ -1,0 +1,15 @@
+server:
+  port: 8002
+spring:
+  application:
+    name: eureka-server
+eureka:
+  client:
+    register-with-eureka: true #向注册中心进行注册（注册中心不注册自己）
+    fetch-registry: true #从注册中心取服务
+    service-url:
+      defaultZone: http://replica2:8003/eureka/ #另一个注册中心地址
+  instance:
+    hostname: replica1
+  server:
+    enable-self-preservation: false #关闭保护模式
