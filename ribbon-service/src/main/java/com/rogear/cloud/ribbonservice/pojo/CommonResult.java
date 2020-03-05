@@ -1,4 +1,4 @@
-package com.rogear.cloud.userservice.pojo;
+package com.rogear.cloud.ribbonservice.pojo;
 
 import java.io.Serializable;
 
@@ -12,8 +12,7 @@ public class CommonResult<T> implements Serializable {
     private String message;
     private Integer code;
 
-    public CommonResult() {
-    }
+    public CommonResult(){}
 
     public CommonResult(T dta, String message, Integer code) {
         this.dta = dta;
