@@ -23,40 +23,40 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping("/create")
+    @PostMapping("/create")
     public CommonResult create(@RequestBody User user){
         userService.create(user);
         return new CommonResult("新增成功",200);
     }
 
-    @RequestMapping("/{id}")
+    @GetMapping("/{id}")
     public CommonResult<User> getUser(@PathVariable Long id){
         User user = userService.getUser(id);
         LOGGER.info("根据id查询用户信息，用户名称：{}",user.getUsername());
         return new CommonResult<User>(user);
     }
 
-    @RequestMapping("/getUserByIds")
+    @GetMapping("/getUserByIds")
     public CommonResult<List<User>> getUserByIds(@RequestParam List<Long> ids){
         List<User> userList = userService.getUserByIds(ids);
         LOGGER.info("根据ids获取用户信息，用户列表{}",userList);
         return new CommonResult<>(userList);
     }
 
-    @RequestMapping("/getByUserName")
-    public CommonResult<List<User>> getByUserName(@RequestParam String username){
-        List<User> userList = userService.getByUserName(username);
+    @GetMapping("/getByUsername")
+    public CommonResult<List<User>> getByUsername(@RequestParam String username){
+        List<User> userList = userService.getByUsername(username);
         LOGGER.info("根据用户名查询用户信息，用户列表{}",userList);
         return new CommonResult<>(userList);
     }
 
-    @RequestMapping("/update")
+    @PostMapping("/update")
     public CommonResult update(@RequestBody User user){
         userService.update(user);
         return new CommonResult(null);
     }
 
-    @RequestMapping("/delete")
+    @PostMapping("/delete")
     public CommonResult delete(@RequestParam Long id){
         userService.delete(id);
         return new CommonResult(null);

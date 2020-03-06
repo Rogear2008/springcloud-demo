@@ -48,7 +48,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> getByUserName(String username) {
+    public List<User> getByUsername(String username) {
         List<User> findUserList = userList.stream().filter(userItem -> userItem.getUsername().equals(username)).collect(Collectors.toList());
         return findUserList;
     }
