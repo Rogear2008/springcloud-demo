@@ -1,0 +1,29 @@
+server:
+  port: 8801
+
+spring:
+  application:
+    name: zuul-proxy
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8001/eureka/
+
+zuul:
+  routes:
+    user-service:
+      path: /user-service/**
+    feign-service:
+      path: /feign-service/**
+  prefix: /proxy #前缀
+  sensitive-headers: Cookie,Set-Cookie,Autherization #设置过滤内容
+  add-host-header: true #是否增加头信息，设置为true时，重定向时会增加头信息
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: 'routes' #开启查看路由断点
