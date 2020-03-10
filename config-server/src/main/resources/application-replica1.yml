@@ -1,0 +1,21 @@
+server:
+  port: 8902
+
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git: #配置Git仓库信息
+          uri: https://gitee.com/Rogear2008/springcloud-config.git
+          username: rogear2008
+          password: abcd1234 #注意保护密码
+          clone-on-start: true #启动时从Git获取数据
+#          search-paths: '{application}' #根据引用名称查询子目录配置信息
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8001/eureka/
+
