@@ -1,0 +1,15 @@
+server:
+  port: 9201
+
+service-url:
+  user-service: http://localhost:8201
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: path_route #\u8DEF\u7531ID
+          uri: ${service-url.user-service}/user/{id} #\u5339\u914D\u7684\u8DEF\u7531\u5730\u5740
+          predicates: #\u65AD\u8A00 \u8DEF\u5F84\u5339\u914D\u7684\u8FDB\u884C\u8DEF\u7531
+            - Path=/user/{id}
+

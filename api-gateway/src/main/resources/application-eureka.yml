@@ -1,0 +1,28 @@
+server:
+  port: 9201
+
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true #从注册中心创建动态路由
+          lower-case-service-id: true #使用小写服务名
+      routes:
+        - id: prefixpath_rout
+          uri: lb://user-service #结合注册中心使用时，需要用lb协议
+          predicates:
+            - Method=GET
+          filters:
+            - PrefixPath=/user
+  application:
+    name: api-gateway
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8001/eureka/
+
+logging:
+  level:
+    org.springframework.cloud.gateway: debug

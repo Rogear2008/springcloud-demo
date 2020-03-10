@@ -1,0 +1,15 @@
+server:
+  port: 9201
+
+service-url:
+  user-service: http://localhost:8201
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: after_route
+          uri: ${service-url.user-service}/user/{id}
+          predicates:
+            - After=2020-03-10T16:30:00+08:00[Asia/Shanghai] #after route predicate 在这个时间点之后匹配路由
+
