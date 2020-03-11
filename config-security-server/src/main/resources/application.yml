@@ -9,7 +9,7 @@ spring:
       server:
         git:
           username: rogear2008
-          password: abcd1234
+          password: XXXXX
           uri: https://gitee.com/Rogear2008/springcloud-config.git
           clone-on-start: true
   security:
