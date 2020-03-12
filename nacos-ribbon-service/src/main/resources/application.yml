@@ -1,0 +1,13 @@
+server:
+  port: 8308
+
+spring:
+  application:
+    name: nacos-ribbon-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+
+service-url:
+  user-service: http://nacos-user-service
